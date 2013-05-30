@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+  <body>
+    <element name="x-class-creator" constructor="ClassCreator" extends="div">
+      <template>
+        <div style="background-color:#F8F8F8;width:620px;align:center;border:2px solid; border-radius:5px;padding:10px;">
+        
+        <div style="background-color:#F8F8F8;border: 1 px solid;width:260px;height:210px;float:right;">&nbsp;
+          <canvas id="cdiag" width="250" height="210"></canvas>
+        </div>    
+     
+        <input type="radio" name="classtype" value="Normal" bind-value="classType" on-click="Update()" /> Normal 
+        <input type="radio" name="classtype" value="Web" bind-value="classType"  on-click="Update()" /> Web UI Component
+        
+        <br/>
+        <br/>
+      
+        <div style="width:150px;font-weight:bold;">
+         Name 
+        </div>
+        <input id="classNameTextBox" type="text" on-key-up="Update()" bind-value="Name" autofocus="autofocus"/>
+        
+        <div style="width:640px;font-weight:bold;">
+          Properties
+        </div>
+        <input id="classProps" type="text" on-key-up="Update()" bind-value="Properties" title="Separate with space e.g. height width length x=0" />
+        
+        <div style="width:640px;font-weight:bold;">
+          Methods
+        </div>
+        <input id="classMethods" type="text" on-key-up="Update()" bind-value="Methods" title="Separate with space e.g. getArea drawWire" />
+
+        <div id="webuionly" style="visibility:hidden">
+          <div style="width:640px;font-weight:bold">
+            Observables
+          </div>
+          <input id="classObservables" type="text" on-key-up="Update()" bind-value="Observables" title="Separate with space e.g. name email" />
+        </div>
+      
+        <br/>
+        
+        <textarea id="outputTextArea" cols="70" rows="20" style="border: 1 px solid;">{{SourceCode}}</textarea>
+      
+        
+        </div>
+      </template>
+      <script type="application/dart" src="classcreator.dart"></script>
+    </element>
+  </body>
+</html>

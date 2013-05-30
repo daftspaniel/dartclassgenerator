@@ -1,0 +1,51 @@
+body {
+  background-color: #F7F5D0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.2em;
+  margin: 15px;
+}
+
+#heading {
+  background-color: #5AADE8;
+  color: #FFFFFF;
+  height: 40px;
+  width:640px;
+  border:2px solid;
+  border-radius:5px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  text-align:center;  
+}
+#header {
+  width:640px;
+  align:center;
+  margin-left:5px;
+}
+#instructions{
+  background-color: #F8F8F8;
+  color: #0;
+  height: 90px;
+  width:640px;
+  border:2px solid;
+  border-radius:5px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;  
+}
+#Select1 {
+    width: 128px;
+}
+
+#classProps {
+    width: 350px;
+}
+
+
+#classMethods {
+    width: 350px;
+}
+
+#classObservables {
+    width: 350px;
+}
