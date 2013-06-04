@@ -7,7 +7,7 @@ import 'dart:html';
 class ClassCreator extends WebComponent {
   
   @observable
-  String Name = "asdf";
+  String Name = "";
   
   @observable
   String Properties = "";
