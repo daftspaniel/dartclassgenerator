@@ -87,10 +87,23 @@ class ClassCreator extends WebComponent {
     SourceCode += "\r\n\r\n";
     
     //Add regular properties
+    String identifier = "";
+    String type = "";
+    num pos = 0;
+    
     if (Properties.length>0){
       for (String prop in Properties.split(' '))
         if (prop.length>0){ 
-          SourceCode += "  var $prop;\r\n";
+          pos = prop.indexOf('.');
+          if(pos>0){
+            type = prop.split('.')[0];
+            identifier = (prop.split('.')[1]).replaceFirst("=", " = ");
+          }else{
+            type = "var";
+            identifier = prop;
+          }
+          SourceCode += "  $type $identifier;\r\n";
+          
           //cursor
           if (props<6){
             
