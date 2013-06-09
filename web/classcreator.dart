@@ -87,28 +87,21 @@ class ClassCreator extends WebComponent {
     SourceCode += "\r\n\r\n";
     
     //Add regular properties
-    String identifier = "";
-    String type = "";
     num pos = 0;
+    var shortHand = [];
     
     if (Properties.length>0){
       for (String prop in Properties.split(' '))
         if (prop.length>0){ 
-          pos = prop.indexOf('.');
-          if(pos>0){
-            type = prop.split('.')[0];
-            identifier = (prop.split('.')[1]).replaceFirst("=", " = ");
-          }else{
-            type = "var";
-            identifier = prop;
-          }
-          SourceCode += "  $type $identifier;\r\n";
+          
+          shortHand = transformShorthand(prop);
+          SourceCode += "  ${shortHand[0]} ${shortHand[1]}${shortHand[2]};\r\n";
           
           //cursor
           if (props<6){
             
             if (props!=5)
-              ca.context2d.fillText(prop, leftmargin*2, cursor);
+              ca.context2d.fillText(shortHand[1], leftmargin*2, cursor);
             else
               ca.context2d.fillText("...", leftmargin*2, cursor);
             cursor +=11;
@@ -143,13 +136,15 @@ class ClassCreator extends WebComponent {
     props = 0;
     if (Methods.length>0){
       for (String method in Methods.split(' ')){
-        
+       
+        shortHand = transformShorthand(method);
+        method = "${shortHand[0]} ${shortHand[1]}";
         if (method.length>0){
           SourceCode += "  $method(){}\r\n\r\n";
           if (props<6){
             
             if (props!=5)
-              ca.context2d.fillText(method, leftmargin*2, cursor);
+              ca.context2d.fillText(shortHand[1], leftmargin*2, cursor);
             else
               ca.context2d.fillText("...", leftmargin*2, cursor);
             cursor +=11;
@@ -165,6 +160,34 @@ class ClassCreator extends WebComponent {
     
   }
   
-  
-  
+  /// Exand Shorthand property to the real deal.
+  List transformShorthand(String Shortie){
+    
+    var pos = Shortie.indexOf('.');
+    var identifier = "";
+    var type = "";
+    var initvalue = "";
+    
+    if(pos>0){
+      type = Shortie.split('.')[0];
+      identifier = Shortie.split('.')[1];
+      pos = identifier.indexOf('=');
+      
+      if (pos>-1){
+        var unprocid = identifier;
+        identifier = identifier.split('=')[0];
+        initvalue = " = " + (unprocid.split('=')[1].trim());
+      }
+      
+    }else{
+      type = "var";
+      identifier = Shortie;
+    }
+    
+    var o = new List()
+        ..add(type)
+        ..add(identifier)
+        ..add(initvalue);
+    return o;
+  }
 }

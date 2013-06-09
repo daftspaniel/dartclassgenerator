@@ -26,12 +26,12 @@ body {
 #instructions{
   background-color: #F8F8F8;
   color: #0;
-  height: 90px;
   width:640px;
   border:2px solid;
   border-radius:5px;
   font-family: 'Open Sans', sans-serif;
-  font-size: 12px;  
+  font-size: 12px;
+  padding-left: 12px;
 }
 #Select1 {
     width: 128px;
