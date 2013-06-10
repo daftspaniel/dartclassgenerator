@@ -118,7 +118,8 @@ class ClassCreator extends WebComponent {
           if (obs.length>0){
             SourceCode += "  \r\n";
             SourceCode += "  @observable\r\n";
-            SourceCode += "  var $obs;\r\n";                 
+            shortHand = transformShorthand(obs);
+            SourceCode += "  ${shortHand[0]} ${shortHand[1]}${shortHand[2]};\r\n";                 
           }
       }
     }
